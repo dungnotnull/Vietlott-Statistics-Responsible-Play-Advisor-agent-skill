@@ -1,0 +1,97 @@
+{
+  "$schema": "./feature-flags.schema.json",
+  "version": "1.0.0",
+  "skill_name": "vietlott-statistics-responsible-play-advisor",
+  "last_updated": "2026-08-10",
+  "environment": {
+    "name": "production",
+    "debug": false,
+    "log_level": "INFO",
+    "log_format": "structured"
+  },
+  "llm": {
+    "default_temperature": 0.2,
+    "max_response_tokens": 2048,
+    "fallback_temperature": 0.0,
+    "retry": {
+      "max_attempts": 3,
+      "backoff_base_ms": 500,
+      "backoff_max_ms": 4000
+    },
+    "context_budget_tokens": 8000,
+    "progressive_disclosure": true,
+    "selective_reference_loading": true
+  },
+  "feature_flags": {
+    "never_generate_predictions": true,
+    "always_include_disclaimer": true,
+    "show_calculation_steps": true,
+    "provide_concrete_examples": true,
+    "flag_risk_indicators": true,
+    "auto_offer_resources_on_risk": true,
+    "frame_as_entertainment": true,
+    "always_mention_house_edge": true,
+    "vnd_currency": true,
+    "bilingual_vi_en_terms": true,
+    "enable_keno_analyzer": true,
+    "enable_max3d_analyzer": true,
+    "enable_power_bonus_ball_math": true,
+    "enable_risk_screener": true,
+    "enable_long_term_projection": true,
+    "enable_investment_alternative_comparison": true,
+    "enable_draw_data_ingestion": true,
+    "enable_independence_testing": true
+  },
+  "guardrails": {
+    "no_prediction_requests_fulfilled": true,
+    "no_investment_framing": true,
+    "no_income_framing": true,
+    "no_guarantees_of_winning": true,
+    "no_encouragement_of_increased_spending": true,
+    "no_diagnosis_or_treatment": true,
+    "require_professional_referral_on_high_risk": true
+  },
+  "calculation": {
+    "currency": "VND",
+    "decimal_places": 4,
+    "odds_format": "1_in_N",
+    "show_intermediate_steps": true,
+    "show_formula_used": true,
+    "show_percentage_and_fraction": true,
+    "investment_assumed_return_rate": 0.07
+  },
+  "env_variables": {
+    "VIETLOTT_LOG_LEVEL": {
+      "required": false,
+      "default": "INFO",
+      "type": "string"
+    },
+    "VIETLOTT_DEBUG": {
+      "required": false,
+      "default": "false",
+      "type": "boolean"
+    },
+    "VIETLOTT_CURRENCY": {
+      "required": false,
+      "default": "VND",
+      "type": "string"
+    },
+    "VIETLOTT_TICKET_COST_OVERRIDE": {
+      "required": false,
+      "default": null,
+      "type": "number"
+    },
+    "VIETLOTT_INVESTMENT_RETURN_RATE": {
+      "required": false,
+      "default": 0.07,
+      "type": "number"
+    }
+  },
+  "data": {
+    "ingestion_config": "config/ingestion.json",
+    "results_dir": "data/results",
+    "results_schema": "data/results.schema.json",
+    "default_real_source": "csv_file",
+    "never_present_synthetic_as_real": true
+  }
+}

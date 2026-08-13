@@ -1,0 +1,112 @@
+{
+  "support_resources": {
+    "vietnam": {
+      "primary": {
+        "name": "Duong day nong Tong doi 111 - Quoc gia (Dap ung khan cap, tim kiem nguoi tham than)",
+        "phone": "111",
+        "hours": "24/7",
+        "website": "http://hotline.tongcuccanhsat.gov.vn",
+        "services": [
+          "Tong dai tu van bao tre em (duong day nong 111)",
+          "Chuyen huong ho tro xac dinh nguy co",
+          "Tu van tam ly co ban"
+        ],
+        "note": "Vietnam chua co duong day nong chuyen biet ve cham soc lam dung tro choi co bac; su dung cac kenh tam ly, y te, xa hoi ben duoi."
+      },
+      "mental_health": {
+        "name": "Vien Y hoc ban truong/Vien Tam than - Bo Y te",
+        "website": "http://viytamthan.vn",
+        "services": [
+          "Kham va tu van tam than hoc",
+          "Dieu tri ran cam cac hanh vi thuoc tinh (gambling disorder)",
+          "Hen kham chuyen khoa"
+        ],
+        "note": "Gay rung (gambling disorder) duoc WHO phan loai la ngoi benh tam than. Kham chuyen khoa tam than la buoc chuan dang."
+      },
+      "hospital_psychology": {
+        "name": "Benh vien Tam than TP. Ho Chi Minh / Benh vien Tam than Ha Noi",
+        "website": "https://tamtphcm.org",
+        "services": [
+          "Kham va dieu tri ngoi benh tro choi co bac",
+          "Tu van gia dinh",
+          "Phuc hoi chuc nang"
+        ]
+      },
+      "social_protection": {
+        "name": "So Lao dong - Thuong binh va Xa hoi (cap tinh/thanh pho)",
+        "services": [
+          "Ho tro xa hoi cho nguoi gap kho khan tai chinh",
+          "Tu van ho so ho tro"
+        ]
+      },
+      "legal_aid": {
+        "name": "Trung tam Tro giup phap ly Nha nuoc (cap tinh/thanh pho)",
+        "services": [
+          "Tu van phap ly mien phi cho nguoi thieu hoan canh",
+          "Ho so no voi ngan hang do choi co bac"
+        ]
+      }
+    },
+    "international_and_online": {
+      "gamblers_anonymous_international": {
+        "name": "Gamblers Anonymous International",
+        "website": "https://www.gamblersanonymous.org",
+        "services": [
+          "12-step recovery program",
+          "Worldwide meeting directory",
+          "Online support"
+        ]
+      },
+      "gambling_therapy_org": {
+        "name": "Gambling Therapy (online, multilingual)",
+        "website": "https://www.gamblingtherapy.org",
+        "services": [
+          "Online support groups",
+          "Multilingual forums",
+          "Self-help resources"
+        ]
+      },
+      "ncpg_us": {
+        "name": "National Council on Problem Gambling (US reference model)",
+        "helpline": "1-800-522-4700",
+        "website": "https://www.ncpgambling.org",
+        "note": "Khung screening NCPG/PGSI duoc tham khao de xay dung danh gia nguy co, khong phai dich vu Viet Nam."
+      }
+    },
+    "crisis": {
+      "indicators": [
+        "Nghi ngo tu tu hoac tu hai lien quan den choi co bac",
+        "Khan cap tai chinh ngay lap tuc do no co bac",
+        "Khong the dung choi du mac dau hau qua nghiem trong"
+      ],
+      "response_vi": "Neu ban dang co y dinh lam thu hai than, vui long goi ngay 111 (duong day nong bao tre em/quoc gia) hoac den co so y te gan nhat, hoac dien thoai cap cuu 115. Co nguoi san sang nghe ban.",
+      "response_en": "For immediate crisis, please contact emergency services (115 in Vietnam) or the national hotline 111, or go to the nearest medical facility."
+    },
+    "professional_consultation": {
+      "when_to_recommend_vi": [
+        "Nguoi dung khong the kiem soat duoc viec choi co bac",
+        "Nguoi dung mo ta hau qua tieu cuc doi voi cuoc song do choi co bac",
+        "Nguoi dung nhac den viec vay tien de choi",
+        "Nguoi dung dang gỡ lai (chasing losses)",
+        "Nguoi dung the hien dau vet kho chiu ve lam dung tro choi",
+        "Nguoi dung xin ho tro ve van de choi co bac"
+      ],
+      "framing_language_vi": {
+        "offer_help": "Dieu ban dang gap la pho bien va co ho tro hieu qua. Nhieu nguoi duoc loi khi duoc ho tro chuyen mon ve lam dung tro choi.",
+        "no_judgment": "Khong co gi xau ho khi xin ho tro. Lam dung tro choi la mot van de suc khoe duoc cong nhan, khong phai loi dang dao duc.",
+        "effective_treatment": "Dieu tri lam dung tro choi la co hieu qua. Phuc hoi la dieu co the va pho bien.",
+        "confidential": "Cac dich vu nay bao mat va duoc thiet ke dung cho tinh huong nhu the nay."
+      }
+    },
+    "regulatory_context": {
+      "decree": "Ngh dinh so 30/2007/ND-CP (va cac sua doi) cua Bo Tai chinh quy dinh kinh doanh xoso kien thiet / Vietlott.",
+      "legal_age": "Phai du 18 tuoi tro len moi duoc mua ve Vietlott.",
+      "operator": "Vietnam Lottery Company (Vietlott) - doanh nghiep nha nuoc, kinh doanh theo cap phep."
+    },
+    "metadata": {
+      "version": "1.0.0",
+      "last_updated": "2026-08-10",
+      "note": "Tai nguyen danh cho muc dich thong tin. Hay tu xac nhan thong tin lien lac hien tai doc lap. Vietnam chua co he thong duong day nong chuyen biet ve lam dung tro choi co bac; cac dich vu tam than/y te/xa hoi ben tren la cac diem tiep can phu hop."
+    }
+  }
+}

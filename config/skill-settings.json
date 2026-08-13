@@ -1,0 +1,131 @@
+{
+  "skill_settings": {
+    "behavior": {
+      "never_generate_predictions": true,
+      "always_include_disclaimer": true,
+      "redirect_to_real_mathematics": true,
+      "show_calculation_steps": true,
+      "provide_concrete_examples": true,
+      "flag_risk_indicators": true,
+      "offer_resources_when_appropriate": true,
+      "use_vnd_currency": true,
+      "bilingual_vi_en_terms": true,
+      "vietnamese_context_first": true
+    },
+    "response_quality": {
+      "acknowledge_user_perspective": true,
+      "explain_why_not_just_what": true,
+      "use_simple_analogies": true,
+      "show_empirical_evidence": true,
+      "avoid_technical_jargon": true,
+      "provide_teaching_explanations": true,
+      "cite_research_foundations": true
+    },
+    "guardrails": {
+      "no_prediction_requests_fulfilled": true,
+      "no_investment_framing": true,
+      "no_income_framing": true,
+      "no_guarantees_of_winning": true,
+      "no_encouragement_of_increased_spending": true,
+      "always_mention_house_edge": true,
+      "always_frame_as_entertainment": true,
+      "no_diagnosis_or_treatment": true,
+      "require_professional_referral_on_high_risk": true
+    },
+    "error_handling": {
+      "admit_uncertainty": true,
+      "offer_alternative_approaches": true,
+      "show_work_transparently": true,
+      "verify_reasonableness": true,
+      "graceful_llm_fallback": true,
+      "fallback_message": "I could not complete that calculation right now. Here is what I can still offer: the general Vietlott odds framework and a worked example. Would you like that?"
+    },
+    "context_optimization": {
+      "start_with_high_level_answer": true,
+      "offer_detail_on_request": true,
+      "load_references_selectively": true,
+      "use_progressive_disclosure": true,
+      "max_context_tokens": 8000
+    },
+    "risk_detection": {
+      "threshold_for_intervention": 2,
+      "auto_offer_resources": true,
+      "keywords_en": [
+        "chasing losses",
+        "borrow money",
+        "can't stop",
+        "need to win",
+        "make money",
+        "investment",
+        "pay bills",
+        "cover losses",
+        "win back",
+        "addicted"
+      ],
+      "keywords_vi": [
+        "gỡ lại",
+        "gỡ vốn",
+        "muốn gỡ",
+        "vay tiền chơi",
+        "không thể dừng",
+        "không dừng được",
+        "đầu tư",
+        "kiếm tiền",
+        "trả nợ",
+        "ăn thua",
+        "nghiện",
+        "bùng nợ",
+        "chơi để kiếm",
+        "bán đồ chơi"
+      ]
+    },
+    "router": {
+      "intent_labels": ["odds", "prediction_refusal", "ev", "mythbust", "keno_max3d", "responsible_play", "unknown"],
+      "default_route": "odds",
+      "escalation_route": "responsible_play"
+    },
+    "logging": {
+      "level": "INFO",
+      "structured": true,
+      "fields": ["intent", "route", "game", "tokens_used", "disclaimer_emitted", "risk_flagged", "fallback_triggered"]
+    }
+  },
+  "formatting": {
+    "response_templates": {
+      "prediction_refusal": "Toi hieu ban muon tim cap so dep, nhung can noi ro: ket qua xoso Vietlott la ngau nhien toan hoc va khong the du doan. Day la nhung gi toi co the giup: [danh sach].",
+      "odds_calculation": "# Tinh xac suat Vietlott\n\n## Game: [ten game]\n\n### Toan hoc\n[buoc tinh]\n\n### Xac suat cua ban\n[ket qua]",
+      "hot_cold_explanation": "# So hot / so lanh: huyen thoai\n\n## Tra loi ngan gon\nPhan tich so hot/cold khong co tac dung vi moi ky quay Vietlott la doc lap thong ke.",
+      "expected_value_analysis": "# Phan tich ky vong (Expected Value)\n\n## Tro choi\n[mo ta + giai thuong]\n\n## Tinh toan\n[tung buoc EV]"
+    },
+    "disclaimer_template_vi": "**Luu y:** Ky nang nay cung cap thong tin giao duc/phan tich chung, khong phai loi khuyen chuyen gia (y te, phap ly, tai chinh). Luu xac nhan voi chuyen gia truoc khi quyet dinh dua tren ket qua.",
+    "disclaimer_template_en": "**Disclaimer:** This skill provides general, educational/analytical information only. It is not a substitute for advice from a qualified professional (medical, legal, financial, or otherwise). Always verify with a qualified professional before making decisions based on its output."
+  },
+  "calculation_defaults": {
+    "precision": {
+      "decimal_places": 4,
+      "significant_figures_for_probability": 4,
+      "odds_format": "1_in_N"
+    },
+    "display": {
+      "show_intermediate_steps": true,
+      "show_formula_used": true,
+      "show_percentage_and_fraction": true,
+      "currency": "VND"
+    }
+  },
+  "reference_file_mapping": {
+    "combinatorics": "references/combinatorics.md",
+    "cognitive_biases": "references/cognitive-biases.md",
+    "expected_value": "references/expected-value.md",
+    "keno_math": "references/keno-math.md",
+    "max3d_math": "references/max3d-math.md",
+    "wheeling_systems": "references/wheeling-systems.md",
+    "responsible_gambling": "references/responsible-gambling.md",
+    "prompt_templates": "references/prompt-templates.md"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "skill_name": "vietlott-statistics-responsible-play-advisor",
+    "last_updated": "2026-08-10"
+  }
+}

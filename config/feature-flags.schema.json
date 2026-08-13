@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "./feature-flags.schema.json",
+  "title": "Vietlott Skill Feature Flags & Configuration",
+  "type": "object",
+  "required": ["version", "skill_name", "environment", "llm", "feature_flags", "guardrails", "calculation"],
+  "properties": {
+    "version": {"type": "string"},
+    "skill_name": {"type": "string", "const": "vietlott-statistics-responsible-play-advisor"},
+    "last_updated": {"type": "string"},
+    "environment": {
+      "type": "object",
+      "required": ["name", "debug", "log_level", "log_format"],
+      "properties": {
+        "name": {"type": "string"},
+        "debug": {"type": "boolean"},
+        "log_level": {"type": "string", "enum": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]},
+        "log_format": {"type": "string", "enum": ["structured", "plain"]}
+      }
+    },
+    "llm": {
+      "type": "object",
+      "required": ["default_temperature", "max_response_tokens", "retry", "context_budget_tokens", "progressive_disclosure"],
+      "properties": {
+        "default_temperature": {"type": "number", "minimum": 0, "maximum": 2},
+        "max_response_tokens": {"type": "integer", "minimum": 256},
+        "fallback_temperature": {"type": "number", "minimum": 0, "maximum": 2},
+        "retry": {
+          "type": "object",
+          "required": ["max_attempts", "backoff_base_ms", "backoff_max_ms"],
+          "properties": {
+            "max_attempts": {"type": "integer", "minimum": 1, "maximum": 10},
+            "backoff_base_ms": {"type": "integer", "minimum": 0},
+            "backoff_max_ms": {"type": "integer", "minimum": 0}
+          }
+        },
+        "context_budget_tokens": {"type": "integer", "minimum": 1024},
+        "progressive_disclosure": {"type": "boolean"},
+        "selective_reference_loading": {"type": "boolean"}
+      }
+    },
+    "feature_flags": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"}
+    },
+    "guardrails": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"}
+    },
+    "calculation": {
+      "type": "object",
+      "required": ["currency", "decimal_places", "odds_format"],
+      "properties": {
+        "currency": {"type": "string"},
+        "decimal_places": {"type": "integer", "minimum": 0, "maximum": 8},
+        "odds_format": {"type": "string", "enum": ["1_in_N", "decimal", "percentage"]},
+        "show_intermediate_steps": {"type": "boolean"},
+        "show_formula_used": {"type": "boolean"},
+        "show_percentage_and_fraction": {"type": "boolean"},
+        "investment_assumed_return_rate": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "env_variables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["required", "default", "type"],
+        "properties": {
+          "required": {"type": "boolean"},
+          "default": {},
+          "type": {"type": "string", "enum": ["string", "boolean", "number", "integer"]}
+        }
+      }
+    }
+  }
+}

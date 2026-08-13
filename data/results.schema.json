@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "./results.schema.json",
+  "title": "Vietlott normalized draw result",
+  "type": "object",
+  "required": ["game", "draw_id", "source", "numbers"],
+  "properties": {
+    "game": {"type": "string", "enum": ["mega_6_45", "power_6_55", "keno", "max_3d"]},
+    "draw_date": {"type": ["string", "null"], "description": "ISO 8601 date YYYY-MM-DD; null allowed for synthetic fixtures"},
+    "draw_id": {"type": "string", "minLength": 1},
+    "source": {"type": "string", "enum": ["synthetic", "official_csv", "http_json", "jsonl_file", "manual"]},
+    "numbers": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 80}},
+    "bonus": {"type": ["integer", "null"], "minimum": 0, "maximum": 80},
+    "three_digit": {"type": ["string", "null"], "pattern": "^\\d{3}$"},
+    "extra": {"type": "object"}
+  },
+  "additionalProperties": false,
+  "notes": {
+    "mega_6_45": "numbers = 6 ints in 1..45, sorted ascending, unique; bonus null; three_digit null",
+    "power_6_55": "numbers = 6 ints in 1..55 sorted ascending unique; bonus = 1 int in 1..55 not in numbers; three_digit null",
+    "keno": "numbers = 20 ints in 1..80 sorted ascending unique; bonus null; three_digit null",
+    "max_3d": "numbers = []; three_digit = 3-digit string 000..999; bonus null"
+  }
+}

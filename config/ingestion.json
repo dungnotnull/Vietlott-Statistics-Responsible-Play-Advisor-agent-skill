@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-08-10",
+  "description": "Pluggable draw-result ingestion sources for the Vietlott skill. The ingester (scripts/ingest_results.py) reads the active source per game, normalizes draws to the schema in data/results.schema.json, dedupes by draw_id, sorts by date, and writes data/results/<game>.jsonl. Real data takes precedence; the synthetic source is a faithful offline/CI fixture (draws sampled from the exact Vietlott distributions) and is NEVER presented as real history.",
+  "defaults": {
+    "out_dir": "data/results",
+    "default_game": "mega_6_45",
+    "synthetic_seed": 20260810,
+    "synthetic_count_per_game": 10000,
+    "request_timeout_seconds": 15,
+    "max_retries": 3,
+    "backoff_base_ms": 500
+  },
+  "sources": {
+    "mega_6_45": [
+      {
+        "type": "synthetic",
+        "active": true,
+        "count": 1000,
+        "seed": 20260810,
+        "source_label": "synthetic"
+      },
+      {
+        "type": "csv_file",
+        "active": false,
+        "path": "data/raw/mega_6_45.csv",
+        "source_label": "official_csv",
+        "comment": "Columns: date(YYYY-MM-DD),draw_id,n1,n2,n3,n4,n5,n6. Populate from https://vietlott.vn results pages. Set active:true to use."
+      },
+      {
+        "type": "http_json",
+        "active": false,
+        "url": "https://example.org/vietlott/mega.json",
+        "source_label": "http_json",
+        "comment": "Optional: any JSON endpoint returning {draws:[{date,numbers:[...]}]}. Configure url + parser to your source."
+      }
+    ],
+    "power_6_55": [
+      {
+        "type": "synthetic",
+        "active": true,
+        "count": 1000,
+        "seed": 20260811,
+        "source_label": "synthetic"
+      },
+      {
+        "type": "csv_file",
+        "active": false,
+        "path": "data/raw/power_6_55.csv",
+        "source_label": "official_csv",
+        "comment": "Columns: date,draw_id,n1..n6,bonus"
+      }
+    ],
+    "keno": [
+      {
+        "type": "synthetic",
+        "active": true,
+        "count": 2000,
+        "seed": 20260812,
+        "source_label": "synthetic"
+      },
+      {
+        "type": "csv_file",
+        "active": false,
+        "path": "data/raw/keno.csv",
+        "source_label": "official_csv",
+        "comment": "Columns: date,draw_id,n1..n20"
+      }
+    ],
+    "max_3d": [
+      {
+        "type": "synthetic",
+        "active": true,
+        "count": 10000,
+        "seed": 20260813,
+        "source_label": "synthetic"
+      },
+      {
+        "type": "csv_file",
+        "active": false,
+        "path": "data/raw/max_3d.csv",
+        "source_label": "official_csv",
+        "comment": "Columns: date,draw_id,three_digit (000-999)"
+      }
+    ]
+  },
+  "official_site_note": "The official site https://vietlott.vn renders results via an AjaxPro (AJAX.NET) handler that requires session/anti-forgery tokens and changes without notice, so it is NOT used as a default automated source. To ingest real data reliably: download or copy results from the official 'Ket qua trung thuong' / 'Thong ke' pages into the matching data/raw/<game>.csv template (one draw per row) and set that source active:true. The ingester validates and normalizes whatever real CSV you supply."
+}
